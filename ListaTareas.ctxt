@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ListaTareas()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ ListaTareas\r\n
+comment1.params=
+comment1.target=void\ verTareas()
+comment1.text=\r\n\ Imprime\ por\ pantalla\ todas\ las\ tareas\ guardadas\r\n
+comment2.params=nuevaTarea
+comment2.target=void\ addTarea(java.lang.String)
+comment2.text=\r\n\ Permite\ a\u00F1adir\ una\ nueva\ tarea\r\n
+comment3.params=
+comment3.target=int\ getNumeroTareas()
+comment3.text=\r\n\ Devuelve\ el\ numero\ de\ tareas\ existentes\r\n
+comment4.params=posicion
+comment4.target=void\ eliminaTarea(int)
+comment4.text=\r\n\ Elimina\ la\ tarea\ que\ ocupa\ la\ posicion\ indicada.\r\n\ Si\ la\ posicion\ indicada\ no\ es\ valida,\ no\ hace\ nada\r\n
+numComments=5
