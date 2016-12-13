@@ -73,14 +73,14 @@ public class ListaTareas
         return tareasPendientes;
     } 
 
-        /**
+    /**
      * Imprime por pantalla todas las tareas guardadas
      */
     public void verTareas()
     {
         System.out.println(listaDeTareas);
     }
-    
+
     /**
      * mt para imprimir todas las tareas existentes, una por una.
      */
@@ -129,18 +129,6 @@ public class ListaTareas
         }
     }
 
-    //     /**
-    //      * muestra todas las tareas con un bucle while. (las muestra numeradas.)
-    //      */
-    //     public void mostrarTarea22(){
-    //         int cont = 0;
-    //         while(cont < listaDeTareas.size()){
-    //             System.out.println((cont +1)+ ". " +listaDeTareas.get(cont));
-    //             cont++;
-    //         }
-    // 
-    //     }
-
     /**
      * muestra las primeras n tareas indicadas como parámetro. En caso de que 
      * haya menos tareas de n tareas se muestran todas.
@@ -177,7 +165,7 @@ public class ListaTareas
     public void mostrarTarea22(){
         int cont = 0;
         while(cont < listaDeTareas.size()){
-            String sol = (cont +1)+ " HECHA. " +listaDeTareas.get(cont);
+            String sol = (cont +1)+ ". " +listaDeTareas.get(cont)+ " ----------------- HECHA";
             if(tareaHecha.get(cont) == true ){
                 System.out.println(sol);
             }
@@ -186,23 +174,29 @@ public class ListaTareas
             }
             cont++;
         }
-
+        System.out.println("======================");
+        System.out.println("");
     }
 
     /**
      * mt que marca una tarea como completada.
      */
     public void marcaComoCompletada(int numeroTarea){
-        int cont = 0;
-        while(cont < listaDeTareas.size() && numeroTarea < listaDeTareas.size()){
-            if(cont == numeroTarea){
-                tareaHecha.set(cont, true);
-            }  
-            cont ++;
+        numeroTarea = numeroTarea -1;
+        if(numeroTarea >= 0 && numeroTarea < listaDeTareas.size()){
+            int cont = 0;
+            while(cont < listaDeTareas.size() && numeroTarea < listaDeTareas.size()){
+                if(cont == numeroTarea){
+                    tareaHecha.set(cont, true);
+                }  
+                cont ++;
+            }
+        }
+        else{
+            System.out.println("Herror, solo es válido el intervalo [ 1 / " +listaDeTareas.size()+ " ].");
+            System.out.println("======================");
+            System.out.println("");
         }
     }
 }
-
-
-
 
