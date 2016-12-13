@@ -9,6 +9,7 @@ public class ListaTareas
 {
     // Coleccion que almacena todas las tareas
     private  ArrayList<String> listaDeTareas;
+    private ArrayList<Boolean> tareaHecha;
 
     /**
      * Constructor for objects of class ListaTareas
@@ -16,14 +17,7 @@ public class ListaTareas
     public ListaTareas()
     {
         listaDeTareas = new ArrayList<String>();
-    }
-
-    /**
-     * Imprime por pantalla todas las tareas guardadas
-     */
-    public void verTareas()
-    {
-        System.out.println(listaDeTareas);
+        tareaHecha = new ArrayList<Boolean>();
     }
 
     /**
@@ -31,7 +25,8 @@ public class ListaTareas
      */
     public void addTarea(String nuevaTarea)
     {
-        listaDeTareas.add(nuevaTarea);
+        listaDeTareas.add(nuevaTarea); // se almacenan las tareas que vamos teniendo
+        tareaHecha.add(false);        //  se almacena "false" al mismo tiempo porque al crear una tarea, la tarea no está hecha. 
     }
 
     /**
@@ -78,6 +73,14 @@ public class ListaTareas
         return tareasPendientes;
     } 
 
+        /**
+     * Imprime por pantalla todas las tareas guardadas
+     */
+    public void verTareas()
+    {
+        System.out.println(listaDeTareas);
+    }
+    
     /**
      * mt para imprimir todas las tareas existentes, una por una.
      */
@@ -126,17 +129,17 @@ public class ListaTareas
         }
     }
 
-    /**
-     * muestra todas las tareas con un bucle while. (las muestra numeradas.)
-     */
-    public void mostrarTarea22(){
-        int cont = 0;
-        while(cont < listaDeTareas.size()){
-            System.out.println((cont +1)+ ". " +listaDeTareas.get(cont));
-            cont++;
-        }
-
-    }
+    //     /**
+    //      * muestra todas las tareas con un bucle while. (las muestra numeradas.)
+    //      */
+    //     public void mostrarTarea22(){
+    //         int cont = 0;
+    //         while(cont < listaDeTareas.size()){
+    //             System.out.println((cont +1)+ ". " +listaDeTareas.get(cont));
+    //             cont++;
+    //         }
+    // 
+    //     }
 
     /**
      * muestra las primeras n tareas indicadas como parámetro. En caso de que 
@@ -151,22 +154,55 @@ public class ListaTareas
     }
 
     /**
-     * devuelve true o false si hay al menos una tarea que contiene el texto indicado como parámetro
+     * devuelve la posición(desde 0) de la primera tarea que contiene el texto indicado como parámetro.
+     * -1 en caso contrario.  NO MUESTRA NADA POR PANTALLA.
      */
-    public boolean hayTareasCoincidentes(String textoABuscar){
+    public int hayTareasCoincidentes(String textoABuscar){
+        int cont2 = -1;        
         int cont = 0;
         boolean igualTexto = false;
         while(cont < getNumeroTareas() && !igualTexto){
-            for(String tarea2: listaDeTareas){
-                if(tarea2.contains(textoABuscar)){
-                    igualTexto = true;
-                }            
-                cont++;
-            }
+            if(listaDeTareas.contains(textoABuscar)){
+                igualTexto = true;
+                cont2 = cont;
+            }                        
+            cont++;
         }
-        return igualTexto;
+        return cont2;
+    }
+
+    /**
+     * muestra todas las tareas con un bucle while. (las muestra numeradas.)
+     */
+    public void mostrarTarea22(){
+        int cont = 0;
+        while(cont < listaDeTareas.size()){
+            String sol = (cont +1)+ " HECHA. " +listaDeTareas.get(cont);
+            if(tareaHecha.get(cont) == true ){
+                System.out.println(sol);
+            }
+            else{
+                System.out.println((cont +1)+ ". " +listaDeTareas.get(cont));
+            }
+            cont++;
+        }
+
+    }
+
+    /**
+     * mt que marca una tarea como completada.
+     */
+    public void marcaComoCompletada(int numeroTarea){
+        int cont = 0;
+        while(cont < listaDeTareas.size() && numeroTarea < listaDeTareas.size()){
+            if(cont == numeroTarea){
+                tareaHecha.set(cont, true);
+            }  
+            cont ++;
+        }
     }
 }
+
 
 
 
