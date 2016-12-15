@@ -160,12 +160,12 @@ public class ListaTareas
     }
 
     /**
-     * muestra todas las tareas con un bucle while. (las muestra numeradas.)
+     * muestra todas las tareas con un bucle while, señalando las que están terminadas con un "HECHA". (las muestra numeradas.)
      */
     public void mostrarTarea22(){
         int cont = 0;
         while(cont < listaDeTareas.size()){
-            String sol = (cont +1)+ ". " +listaDeTareas.get(cont)+ " ----------------- HECHA";
+            String sol = (cont +1)+ ". " +listaDeTareas.get(cont)+ " ----------------- HECHA.";
             if(tareaHecha.get(cont) == true ){
                 System.out.println(sol);
             }
